@@ -20,8 +20,23 @@ const User = sequelize.define('User', {
   password: {
     type: DataTypes.STRING,
     allowNull: false
+  },
+  mobile: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  country: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  state: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  city: {
+    type: DataTypes.STRING,
+    allowNull: false
   }
 });
-
 
 module.exports = User;

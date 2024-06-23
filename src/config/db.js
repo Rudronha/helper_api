@@ -15,5 +15,6 @@ const fun = async()=>{
     }
 }
 fun();
+
 module.exports = sequelize;
 

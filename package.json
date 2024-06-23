@@ -1,9 +1,9 @@
 {
   "name": "api",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
+  "description": "helper backend api",
+  "main": "app.js", "scripts": {
+    "start":"node src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -18,5 +18,8 @@
     "mysql": "^2.18.1",
     "mysql2": "^3.9.4",
     "sequelize": "^6.37.3"
+  },
+  "directories": {
+    "test": "tests"
   }
 }

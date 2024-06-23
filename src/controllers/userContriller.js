@@ -3,7 +3,7 @@ const Users  = require('../models/userModel');
 const bcrypt = require('bcryptjs');
 
 exports.register = async (req, res) => {
-    const { username, email, password } = req.body;
+    const { username, email, password, ...others } = req.body;
   
     // Check if user already exists
     const user = await Users.findOne({ where: { email: email}});
@@ -15,7 +15,7 @@ exports.register = async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 10);
   
     // Create new user
-    const newUser = { username, email, password: hashedPassword };
+    const newUser = { username, email, password: hashedPassword ,...others};
     const User = Users.create(newUser);
     await (await User).save();
     res.status(201).json({ message: 'User created successfully' });
