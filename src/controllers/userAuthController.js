@@ -3,7 +3,7 @@ const Users  = require('../models/userModel');
 const bcrypt = require('bcryptjs');
 
 exports.register = async (req, res) => {
-    const { username, email, password, ...others } = req.body;
+  const { username, email, password, ...others } = req.body;
   
     // Check if user already exists
     const user = await Users.findOne({ where: { email: email}});
@@ -19,7 +19,7 @@ exports.register = async (req, res) => {
     const User = Users.create(newUser);
     await (await User).save();
     res.status(201).json({ message: 'User created successfully' });
-  };
+};
 
   // Login route
 exports.login = async (req, res) => {
@@ -36,8 +36,8 @@ exports.login = async (req, res) => {
     if (await bcrypt.compare(password, user.password)) {
       // Store user data in session
       
-      req.session.user = user;
-      return res.json({ message: 'Login successful' });
+      req.session.user = user; 
+      return res.json({ userId: user.id, username: user.username , message: 'Login successful' });
     } else {
       return res.status(401).json({ message: 'Invalid email or password' });
     }
