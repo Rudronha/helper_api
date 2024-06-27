@@ -4,9 +4,10 @@ const { Sequelize } = require('sequelize');
 
 const sequelize = new Sequelize(config.database, config.user, config.password, {
   host: config.host,
-  dialect: 'mysql'
+  dialect: 'mysql',
+  logging: false
 });
-const fun = async()=>{
+const connectDB = async()=>{
     try {
         await sequelize.authenticate();
         console.log('Connected');
@@ -14,7 +15,7 @@ const fun = async()=>{
         console.error('Unable to connect to the database:', error);
     }
 }
-fun();
+connectDB();
 
 module.exports = sequelize;
 
